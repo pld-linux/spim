@@ -6,6 +6,7 @@ Release:	0
 License:	own, incompatibile with GPL
 Group:		Applications/Emulators
 Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
+# Source0-md5:	be9cf6ff2798e507736d05eb5c70914f
 Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
