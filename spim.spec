@@ -1,4 +1,4 @@
-#a $Revision: 1.17 $, $Date: 2005-03-13 18:12:03 $
+#a $Revision: 1.18 $, $Date: 2005-03-13 18:31:13 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS-a
 Name:		spim
@@ -62,6 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Documentation/*.ps
 %attr(755,root,root) %{_bindir}/spim
+%dir %{_datadir}/spim
 %{_datadir}/spim/trap.handler
 
 %files -n xspim
