@@ -41,7 +41,7 @@ Nak³adka na SPIM daj±ca interfejs X.
 %patch0 -p0
 
 %build
-./Configure 
+./Configure
 xmkmf
 %{__make}
 %{__make} xspim
