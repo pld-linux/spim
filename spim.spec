@@ -5,8 +5,6 @@ Version:	6.3
 Release:	0
 License:	own, incopatibile with GNU
 Group:		Applications/Emulators
-Group(de):	Applikationen/Emulators
-Group(pl):	Aplikacje/Emulatory
 Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
 Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
@@ -30,8 +28,6 @@ maszynie.
 Summary:	X interface to spim
 Summary(pl):	Interfejs X do SPIM-a
 Group:		Applications/Emulators
-Group(de):	Applikationen/Emulators
-Group(pl):	Aplikacje/Emulatory
 Requires:	spim = %{version}
 
 %description -n xspim
