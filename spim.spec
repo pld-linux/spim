@@ -1,4 +1,3 @@
-# $Revision: 1.3 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS'a
 Name:		spim
@@ -6,29 +5,32 @@ Version:	6.3
 Release:	0
 License:	own, incopatibile with GNU
 Group:		Applications/Emulators
+Group(de):	Applikationen/Emulators
 Group(pl):	Aplikacje/Emulatory
-Source0:	spim.tar.gz
-Patch0:		spim-dirs.patch
+Source0:	%{name}.tar.gz
+Patch0:		%{name}-dirs.patch
 Url:		http://www.cs.wisc.edu/~larus/spim.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
 
 %description
-SPIM S20 is a software simulator that runs assembly language programs for
-the MIPS R2000/R3000 RISC computers.  SPIM can read and immediately run
-files containing assembly language statements.  SPIM is a self-contained
-system for running these programs and contains a debugger and interface to
-the operating system.
+SPIM S20 is a software simulator that runs assembly language programs
+for the MIPS R2000/R3000 RISC computers. SPIM can read and immediately
+run files containing assembly language statements. SPIM is a
+self-contained system for running these programs and contains a
+debugger and interface to the operating system.
 
 %description -l pl
-Asembler i emulator MIPS'a (R2000/R3000) pozwalajacy pisanie i uruchamianie
-programow napisanych w asemblerze MIPS'a na dowolnej maszynie.
+Asembler i emulator MIPS'a (R2000/R3000) pozwalajacy pisanie i
+uruchamianie programow napisanych w asemblerze MIPS'a na dowolnej
+maszynie.
 
 %package -n xspim
 Summary:	X interface to spim
 Group:		Applications/Emulators
-Group(pl):	Aplikacje/Emulator
+Group(de):	Applikationen/Emulators
+Group(pl):	Aplikacje/Emulatory
 Requires:	spim = %{version}
 
 %description -n xspim
