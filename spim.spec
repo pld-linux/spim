@@ -1,3 +1,4 @@
+#a $Revision: 1.16 $, $Date: 2004-10-29 11:17:59 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS-a
 Name:		spim
@@ -19,8 +20,8 @@ self-contained system for running these programs and contains a
 debugger and interface to the operating system.
 
 %description -l pl
-Asembler i emulator MIPS-a (R2000/R3000) pozwalajacy pisanie i
-uruchamianie programow napisanych w asemblerze MIPS-a na dowolnej
+Asembler i emulator MIPS-a (R2000/R3000) pozwalaj±cy pisanie i
+uruchamianie programów napisanych w asemblerze MIPS-a na dowolnej
 maszynie.
 
 %package -n xspim
