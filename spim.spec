@@ -3,7 +3,7 @@ Summary(pl):	symulator MIPS-a
 Name:		spim
 Version:	6.3
 Release:	0
-License:	own, incopatibile with GNU
+License:	own, incompatibile with GNU
 Group:		Applications/Emulators
 Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
 Patch0:		%{name}-dirs.patch
