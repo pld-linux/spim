@@ -1,9 +1,9 @@
-#a $Revision: 1.20 $, $Date: 2005-03-13 18:36:18 $
+#a $Revision: 1.21 $, $Date: 2005-03-15 21:32:16 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS-a
 Name:		spim
 Version:	7.1
-Release:	0
+Release:	0.1
 License:	own, incompatibile with GPL
 Group:		Applications/Emulators
 Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
@@ -11,6 +11,7 @@ Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
 Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
 BuildRequires:	glibc-static
+BuildRequires:	imake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,10 +30,10 @@ maszynie.
 Summary:	X interface to spim
 Summary(pl):	Interfejs X do SPIM-a
 Group:		Applications/Emulators
-Requires:	spim = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description -n xspim
-X interface to SPIM -- MIPS emulator
+X interface to SPIM - MIPS emulator
 
 %description -n xspim -l pl
 Nak³adka na SPIM daj±ca interfejs X.
@@ -46,7 +47,6 @@ Nak³adka na SPIM daj±ca interfejs X.
 xmkmf
 %{__make}
 %{__make} xspim
-
 
 %install
 rm -rf $RPM_BUILD_ROOT
