@@ -1,0 +1,19 @@
+--- ./Imakefile.old	Sun Jan 14 21:55:15 2001
++++ ./Imakefile	Sun Mar 11 23:14:45 2001
+@@ -44,13 +44,13 @@
+ #
+ 
+ # Full path for directory that will hold the trap handler file:
+-TRAP_DIR = .
++TRAP_DIR = /usr/share/spim
+ 
+ # Full path for the directory that will hold the executable files:
+-BIN_DIR = /usr/unsup/bin
++BIN_DIR = /usr/bin
+ 
+ # Full path for the directory that will hold the man files:
+-MAN_DIR = /var/unsup/man
++MAN_DIR = /usr/man
+ 
+ 
+ # If you have flex, use it instead of lex.  If you use flex, define this
