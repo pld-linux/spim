@@ -1,15 +1,16 @@
-#a $Revision: 1.16 $, $Date: 2004-10-29 11:17:59 $
+#a $Revision: 1.17 $, $Date: 2005-03-13 18:12:03 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS-a
 Name:		spim
-Version:	6.3
+Version:	7.1
 Release:	0
 License:	own, incompatibile with GPL
 Group:		Applications/Emulators
 Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
-# Source0-md5:	be9cf6ff2798e507736d05eb5c70914f
+# Source0-md5:	24546da54bca92d96bf2ea284e81d6eb
 Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
+BuildRequires:	glibc-static
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
