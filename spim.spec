@@ -49,7 +49,7 @@ xmkmf
 
 %install
 rm -rf $RPM_BUILD_ROOT
-%{__install} -d $RPM_BUILD_ROOT%{_datadir}/spim
+install -d $RPM_BUILD_ROOT%{_datadir}/spim
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
