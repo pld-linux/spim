@@ -1,5 +1,5 @@
 Summary:	MIPS simulator
-Summary(pl):	symulator MIPS'a
+Summary(pl):	symulator MIPS-a
 Name:		spim
 Version:	6.3
 Release:	0
@@ -7,9 +7,9 @@ License:	own, incopatibile with GNU
 Group:		Applications/Emulators
 Group(de):	Applikationen/Emulators
 Group(pl):	Aplikacje/Emulatory
-Source0:	%{name}.tar.gz
+Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
 Patch0:		%{name}-dirs.patch
-Url:		http://www.cs.wisc.edu/~larus/spim.html
+URL:		http://www.cs.wisc.edu/~larus/spim.html
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_sysconfdir	/etc
@@ -22,12 +22,13 @@ self-contained system for running these programs and contains a
 debugger and interface to the operating system.
 
 %description -l pl
-Asembler i emulator MIPS'a (R2000/R3000) pozwalajacy pisanie i
-uruchamianie programow napisanych w asemblerze MIPS'a na dowolnej
+Asembler i emulator MIPS-a (R2000/R3000) pozwalajacy pisanie i
+uruchamianie programow napisanych w asemblerze MIPS-a na dowolnej
 maszynie.
 
 %package -n xspim
 Summary:	X interface to spim
+Summary(pl):	Interfejs X do SPIM-a
 Group:		Applications/Emulators
 Group(de):	Applikationen/Emulators
 Group(pl):	Aplikacje/Emulatory
@@ -37,7 +38,7 @@ Requires:	spim = %{version}
 X interface to SPIM -- MIPS emulator
 
 %description -n xspim -l pl
-Nak³adka na SPIM'a dajaca interfejs w X'ach
+Nak³adka na SPIM daj±ca interfejs X.
 
 %prep
 %setup -q
@@ -66,7 +67,6 @@ rm -rf $RPM_BUILD_ROOT
 %doc Documentation/*gz
 %attr(755,root,root) %{_bindir}/spim
 %{_datadir}/spim/trap.handler
-
 
 %files -n xspim
 %defattr(644,root,root,755)
