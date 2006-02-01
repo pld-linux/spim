@@ -1,19 +1,58 @@
---- Imakefile.old	2005-03-13 19:32:30.452242920 +0100
-+++ Imakefile	2005-03-13 19:30:11.432377152 +0100
-@@ -44,13 +44,13 @@
- #
+diff -Nur spim-7.2.1.orig/spim/Makefile spim-7.2.1/spim/Makefile
+--- spim-7.2.1.orig/spim/Makefile	2005-08-28 20:58:14.000000000 +0000
++++ spim-7.2.1/spim/Makefile	2006-02-01 20:37:22.000000000 +0000
+@@ -46,16 +46,16 @@
+ VPATH = src:$(CPU_DIR)
  
  # Full path for directory that will hold the exception handler file:
--EXCEPTION_DIR = .
+-EXCEPTION_DIR = ../CPU
 +EXCEPTION_DIR = /usr/share/spim
+ 
+ # Path of directory that contains SPIM tests:
+ TEST_DIR = ../Tests
  
  # Full path for the directory that will hold the executable files:
 -BIN_DIR = /usr/unsup/bin
 +BIN_DIR = /usr/bin
  
  # Full path for the directory that will hold the man files:
--MAN_DIR = /var/unsup/man
-+MAN_DIR = /usr/man
+-MAN_DIR = /usr/unsup/man
++MAN_DIR = /usr/share/man
  
+ 
+ # Full path for the exception handler file:
+@@ -175,9 +175,9 @@
+ 	rm -f spim spim.exe *.o TAGS test.out lex.yy.c y.tab.c y.tab.h y.output
+ 
+ install: spim
+-	install -c -s  spim $(BIN_DIR)
+-	install -c -m 0444 exceptions.s $(EXCEPTION_DIR)
+-	install -c -m 0444 spim.man $(MAN_DIR)
++	install spim $(DESTDIR)/$(BIN_DIR)
++	install ../CPU/exceptions.s $(DESTDIR)/$(EXCEPTION_DIR)
++	install ../Documentation/spim.man $(DESTDIR)/$(MAN_DIR)
+ 
+ very-clean: clean
+ 	rm -f configuration
+diff -Nur spim-7.2.1.orig/xspim/Imakefile spim-7.2.1/xspim/Imakefile
+--- spim-7.2.1.orig/xspim/Imakefile	2005-08-28 20:58:15.000000000 +0000
++++ spim-7.2.1/xspim/Imakefile	2006-02-01 20:39:24.000000000 +0000
+@@ -33,15 +33,15 @@
+ #
+ 
+ # Full path for the directory that will hold the executable files:
+-BIN_DIR = /usr/local/bin
++BIN_DIR = /usr/bin
+ 
+ # Full path for the directory that will hold the man files:
+-MAN_DIR = /usr/local/share/man1
++MAN_DIR = /usr/share/man
+ 
+ # Full path for the exception handler file:
+ #EXCEPTION_PATH = /usr/local/lib/exceptions.s
+ # Use this path for testing:
+-EXCEPTION_PATH = $(CPU_DIR)/exceptions.s
++EXCEPTION_PATH = /usr/share/spim/exceptions.s
  
  # If you have flex, use it instead of lex.  If you use flex, define this
+ # variable and set LEXFLAGS.
