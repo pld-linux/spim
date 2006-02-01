@@ -1,16 +1,15 @@
-#a $Revision: 1.21 $, $Date: 2005-03-15 21:32:16 $
+#a $Revision: 1.22 $, $Date: 2006-02-01 21:12:54 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS-a
 Name:		spim
-Version:	7.1
+Version:	7.2.1
 Release:	0.1
 License:	own, incompatibile with GPL
 Group:		Applications/Emulators
 Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
-# Source0-md5:	24546da54bca92d96bf2ea284e81d6eb
+# Source0-md5:	0fe5696659364d38660f5610ef380ad0
 Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
-BuildRequires:	glibc-static
 BuildRequires:	imake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -40,31 +39,53 @@ Nak³adka na SPIM daj±ca interfejs X.
 
 %prep
 %setup -q
-%patch0 -p0
+%patch0 -p1
+ln -sf ../spim/configuration xspim/configuration
 
 %build
-./Configure
+cat << EOF > spim/configuration
+%ifarch %{ix86} %{x8664}
+-DLITTLEENDIAN
+%else
+-DBIGENDIAN
+%endif
+-DUSE_TERMIOS
+EOF
+
+%{__make} -C spim spim \
+	CC="%{__cc} %{rpmcflags}" \
+	LDFLAGS="%{rpmldflags} -lm"
+
+cd xspim
 xmkmf
-%{__make}
-%{__make} xspim
+%{__make} xspim	\
+	CC="%{__cc}" \
+	LD="%{__cc} -nostdlib" \
+	CCOPTIONS="%{rpmcflags}" \
+	EXTRA_LDOPTIONS="%{rpmldflags}"
+cd ..
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_datadir}/spim
+install -d $RPM_BUILD_ROOT{%{_datadir}/spim,%{_bindir},%{_mandir}/man1}
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+install spim/spim $RPM_BUILD_ROOT%{_bindir}
+install xspim/xspim $RPM_BUILD_ROOT%{_bindir}
+install Documentation/spim.man $RPM_BUILD_ROOT%{_mandir}/man1/spim.1
+install Documentation/xspim.man $RPM_BUILD_ROOT%{_mandir}/man1/xspim.1
+install CPU/exceptions.s $RPM_BUILD_ROOT%{_datadir}/spim
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog README Documentation/*.ps
+%doc ChangeLog README VERSION Documentation/SPIM.html
 %attr(755,root,root) %{_bindir}/spim
-%dir %{_datadir}/spim
-%{_datadir}/spim/exceptions.s
+%{_datadir}/spim
+%{_mandir}/man1/spim.1*
 
 %files -n xspim
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/xspim
+%{_mandir}/man1/xspim.1*
