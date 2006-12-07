@@ -1,58 +1,78 @@
-diff -Nur spim-7.2.1.orig/spim/Makefile spim-7.2.1/spim/Makefile
---- spim-7.2.1.orig/spim/Makefile	2005-08-28 20:58:14.000000000 +0000
-+++ spim-7.2.1/spim/Makefile	2006-02-01 20:37:22.000000000 +0000
-@@ -46,16 +46,16 @@
- VPATH = src:$(CPU_DIR)
+diff -bur spim-7.3.orig/spim/Makefile spim-7.3/spim/Makefile
+--- spim-7.3.orig/spim/Makefile	2006-12-07 16:20:41.546384065 +0100
++++ spim-7.3/spim/Makefile	2006-12-07 17:00:56.053254640 +0100
+@@ -54,13 +54,13 @@
  
- # Full path for directory that will hold the exception handler file:
--EXCEPTION_DIR = ../CPU
-+EXCEPTION_DIR = /usr/share/spim
- 
- # Path of directory that contains SPIM tests:
- TEST_DIR = ../Tests
  
  # Full path for the directory that will hold the executable files:
--BIN_DIR = /usr/unsup/bin
+-BIN_DIR = /usr/local/bin
 +BIN_DIR = /usr/bin
  
+ # Full path for the directory that will hold the exception handler:
+-EXCEPTION_DIR = /usr/local/lib
++EXCEPTION_DIR = /usr/share/spim
+ 
  # Full path for the directory that will hold the man files:
--MAN_DIR = /usr/unsup/man
+-MAN_DIR = /usr/man/mann
 +MAN_DIR = /usr/share/man
  
  
- # Full path for the exception handler file:
-@@ -175,9 +175,9 @@
+ # If you have flex, use it instead of lex.  If you use flex, define this
+@@ -93,11 +93,12 @@
+ DEFINES = $(ENDIAN) $(MEM_SIZES) -DDEFAULT_EXCEPTION_HANDLER="\"$(EXCEPTION_DIR)/exceptions.s\"" -DSPIM_VERSION="\"`cat ../VERSION`\""
+ 
+ CC = gcc
+-CFLAGS = -I. -I$(CPU_DIR) $(DEFINES) -g -Wall
++CFLAGS += -I. -I$(CPU_DIR) $(DEFINES) -g -Wall
+ YFLAGS = -d --file-prefix=y
+ YCFLAGS =
+ LDFLAGS = -lm
+ CSH = bash
++DESTDIR =
+ 
+ # lex.yy.c is usually compiled with -O to speed it up.
+ 
+@@ -113,7 +114,7 @@
+ 	make -f Makefile spim2
+ 
+ spim2:	$(OBJS) spim.o
+-	$(CC) -g $(OBJS) spim.o $(LDFLAGS) -o spim -lm
++	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) spim.o -o spim
+ 
+ 
+ force:	configuration
+@@ -174,11 +175,11 @@
  	rm -f spim spim.exe *.o TAGS test.out lex.yy.c y.tab.c y.tab.h y.output
  
  install: spim
 -	install -c -s  spim $(BIN_DIR)
--	install -c -m 0444 exceptions.s $(EXCEPTION_DIR)
--	install -c -m 0444 spim.man $(MAN_DIR)
-+	install spim $(DESTDIR)/$(BIN_DIR)
-+	install ../CPU/exceptions.s $(DESTDIR)/$(EXCEPTION_DIR)
-+	install ../Documentation/spim.man $(DESTDIR)/$(MAN_DIR)
+-	install -c -m 0444 $(CPU_DIR)/exceptions.s $(EXCEPTION_DIR)
++	install -D spim $(DESTDIR)$(BIN_DIR)
++	install -D $(CPU_DIR)/exceptions.s $(DESTDIR)$(EXCEPTION_DIR)
+ 
+ install-man:
+-	install -c -m 0444 $(DOC_DIR)/spim.man $(MAN_DIR)
++	install -D $(DOC_DIR)/spim.man $(DESTDIR)$(MAN_DIR)/man1
  
  very-clean: clean
  	rm -f configuration
-diff -Nur spim-7.2.1.orig/xspim/Imakefile spim-7.2.1/xspim/Imakefile
---- spim-7.2.1.orig/xspim/Imakefile	2005-08-28 20:58:15.000000000 +0000
-+++ spim-7.2.1/xspim/Imakefile	2006-02-01 20:39:24.000000000 +0000
-@@ -33,15 +33,15 @@
+diff -bur spim-7.3.orig/xspim/Imakefile spim-7.3/xspim/Imakefile
+--- spim-7.3.orig/xspim/Imakefile	2006-12-07 16:20:41.550383738 +0100
++++ spim-7.3/xspim/Imakefile	2006-12-07 17:04:40.640944304 +0100
+@@ -33,13 +33,13 @@
  #
  
  # Full path for the directory that will hold the executable files:
 -BIN_DIR = /usr/local/bin
 +BIN_DIR = /usr/bin
  
+ # Full path for the directory that will hold the exception handler:
+-EXCEPTION_DIR = /usr/local/lib
++EXCEPTION_DIR = /usr/share/spim
+ 
  # Full path for the directory that will hold the man files:
--MAN_DIR = /usr/local/share/man1
+-MAN_DIR = /usr/man/mann
 +MAN_DIR = /usr/share/man
  
- # Full path for the exception handler file:
- #EXCEPTION_PATH = /usr/local/lib/exceptions.s
- # Use this path for testing:
--EXCEPTION_PATH = $(CPU_DIR)/exceptions.s
-+EXCEPTION_PATH = /usr/share/spim/exceptions.s
  
  # If you have flex, use it instead of lex.  If you use flex, define this
- # variable and set LEXFLAGS.
