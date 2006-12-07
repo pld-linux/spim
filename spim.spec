@@ -1,8 +1,8 @@
-#a $Revision: 1.22 $, $Date: 2006-02-01 21:12:54 $
+#a $Revision: 1.23 $, $Date: 2006-12-07 16:15:17 $
 Summary:	MIPS simulator
 Summary(pl):	symulator MIPS-a
 Name:		spim
-Version:	7.2.1
+Version:	7.3
 Release:	0.1
 License:	own, incompatibile with GPL
 Group:		Applications/Emulators
@@ -58,7 +58,8 @@ EOF
 
 cd xspim
 xmkmf
-%{__make} xspim	\
+%{__make} -j1 xspim	\
+
 	CC="%{__cc}" \
 	LD="%{__cc} -nostdlib" \
 	CCOPTIONS="%{rpmcflags}" \
