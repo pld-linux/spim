@@ -1,6 +1,6 @@
-#a $Revision: 1.24 $, $Date: 2006-12-07 16:26:52 $
+#a $Revision: 1.25 $, $Date: 2007-02-12 01:06:33 $
 Summary:	MIPS simulator
-Summary(pl):	symulator MIPS-a
+Summary(pl.UTF-8):   symulator MIPS-a
 Name:		spim
 Version:	7.3
 Release:	0.1
@@ -20,22 +20,22 @@ run files containing assembly language statements. SPIM is a
 self-contained system for running these programs and contains a
 debugger and interface to the operating system.
 
-%description -l pl
-Asembler i emulator MIPS-a (R2000/R3000) pozwalaj±cy pisanie i
-uruchamianie programów napisanych w asemblerze MIPS-a na dowolnej
+%description -l pl.UTF-8
+Asembler i emulator MIPS-a (R2000/R3000) pozwalajÄ…cy pisanie i
+uruchamianie programÃ³w napisanych w asemblerze MIPS-a na dowolnej
 maszynie.
 
 %package -n xspim
 Summary:	X interface to spim
-Summary(pl):	Interfejs X do SPIM-a
+Summary(pl.UTF-8):   Interfejs X do SPIM-a
 Group:		Applications/Emulators
 Requires:	%{name} = %{version}-%{release}
 
 %description -n xspim
 X interface to SPIM - MIPS emulator
 
-%description -n xspim -l pl
-Nak³adka na SPIM daj±ca interfejs X.
+%description -n xspim -l pl.UTF-8
+NakÅ‚adka na SPIM dajÄ…ca interfejs X.
 
 %prep
 %setup -q
