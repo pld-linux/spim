@@ -1,6 +1,6 @@
-#a $Revision: 1.25 $, $Date: 2007-02-12 01:06:33 $
+#a $Revision: 1.26 $, $Date: 2007-02-12 22:09:15 $
 Summary:	MIPS simulator
-Summary(pl.UTF-8):   symulator MIPS-a
+Summary(pl.UTF-8):	symulator MIPS-a
 Name:		spim
 Version:	7.3
 Release:	0.1
@@ -27,7 +27,7 @@ maszynie.
 
 %package -n xspim
 Summary:	X interface to spim
-Summary(pl.UTF-8):   Interfejs X do SPIM-a
+Summary(pl.UTF-8):	Interfejs X do SPIM-a
 Group:		Applications/Emulators
 Requires:	%{name} = %{version}-%{release}
 
