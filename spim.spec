@@ -1,4 +1,4 @@
-#a $Revision: 1.26 $, $Date: 2007-02-12 22:09:15 $
+#a $Revision: 1.27 $, $Date: 2008-01-10 16:08:53 $
 Summary:	MIPS simulator
 Summary(pl.UTF-8):	symulator MIPS-a
 Name:		spim
@@ -10,7 +10,9 @@ Source0:	http://www.cs.wisc.edu/~larus/SPIM/%{name}.tar.gz
 # Source0-md5:	52002170982d157fd89d445b481bd223
 Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
-BuildRequires:	imake
+BuildRequires:	bison
+BuildRequires:	flex
+BuildRequires:	xorg-util-imake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
