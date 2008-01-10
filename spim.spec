@@ -1,4 +1,4 @@
-#a $Revision: 1.27 $, $Date: 2008-01-10 16:08:53 $
+#a $Revision: 1.28 $, $Date: 2008-01-10 16:34:53 $
 Summary:	MIPS simulator
 Summary(pl.UTF-8):	symulator MIPS-a
 Name:		spim
@@ -12,6 +12,8 @@ Patch0:		%{name}-dirs.patch
 URL:		http://www.cs.wisc.edu/~larus/spim.html
 BuildRequires:	bison
 BuildRequires:	flex
+BuildRequires:	xorg-cf-files
+BuildRequires:	xorg-lib-libXaw-devel
 BuildRequires:	xorg-util-imake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -55,7 +57,7 @@ cat << EOF > spim/configuration
 EOF
 
 %{__make} -C spim spim \
-	CC="%{__cc} %{rpmcflags}" \
+	CC="%{__cc} %{rpmcflags} -lm" \
 	LDFLAGS="%{rpmldflags} -lm"
 
 cd xspim
