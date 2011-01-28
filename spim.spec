@@ -1,4 +1,3 @@
-#a $Revision: 1.28 $, $Date: 2008-01-10 16:34:53 $
 Summary:	MIPS simulator
 Summary(pl.UTF-8):	symulator MIPS-a
 Name:		spim
