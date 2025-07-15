@@ -42,7 +42,7 @@ Nakładka na SPIM dająca interfejs X.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch -P0 -p1
 ln -sf ../spim/configuration xspim/configuration
 
 %build
